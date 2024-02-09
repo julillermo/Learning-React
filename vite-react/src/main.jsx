@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import QuickStart from './QuickStart.jsx'
 import ThinkingReact from './ThinkingInReact.jsx'
+import DescribingTheUI from './DescribingTheUI.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -21,5 +22,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <br /><hr /><br />
     <ThinkingReact />
     <br /><hr /><br />
+    <DescribingTheUI />
   </React.StrictMode>,
 )

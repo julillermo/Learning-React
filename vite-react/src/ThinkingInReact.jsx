@@ -1,10 +1,15 @@
 import { useState } from "react";
 
 function ThinkingReact(){
+
+
 	// This function is just for pushing the details into the template
 	// 	before returning them to be dispalayed.
-
-	function ProductCategoryRow({ category }) { 
+	function ProductCategoryRow({ category }) {
+		// Personally, if the component doens't really benefit from being factored out,
+		//	it can just be directly part of the code. No need for a function.
+		// This does make the code more organized, but there's more code as a result.
+		// Also, DO NOT DECLARE COMPONENTS INSIDE OTHER COMPONENTS
 		return(
 			<tr>
 				<th colSpan="2">
@@ -14,9 +19,13 @@ function ThinkingReact(){
 		)
 	}
 
+
+
 	// This function is just for pushing the details into the template
 	// 	before returning them to be dispalayed.
 	function ProductRow({ product }) {
+		// This component makes more sense than ProductCategoryRow()
+		//	because it has to make use of conditional statements.
 		const name = product.stocked ? product.name : 
 			<span style={{ color : 'red' }}> 
 				{product.name}
@@ -30,6 +39,8 @@ function ThinkingReact(){
 			</tr>
 		)
 	}
+
+
 
 	function ProductTable({ products, filterText, inStockOnly}){
 		const rows  = [];
@@ -46,7 +57,7 @@ function ThinkingReact(){
 				return ;
 			}
 
-			// This would only work because the list we're handling is already arranged?
+			// This would only work because the list we're handling is already arranged? I think so
 			if (product.category !== lastCategory){
 				rows.push(
 					<ProductCategoryRow
@@ -77,6 +88,8 @@ function ThinkingReact(){
 		)
 	}
 
+
+
 	function SearchBar({ filterText, inStockOnly, onFilterTextChange, onInStockOnlyChange}) {
 		return(
 			<form>
@@ -84,19 +97,18 @@ function ThinkingReact(){
 					type="text"
 					value={filterText} // FWIU, this means that it changes live with each keypress
 					placeholder="Search..."
-					onChange={(e) => onFilterTextChange(e.target.value)} // It also means that values are passed live
+					onChange={(e) => onFilterTextChange(e.target.value)} // It also means it gets rerendered every keypress
 					/>
 					{/* change the value of the 'filterText state' owned by the FilterableProductTable component */}
-					{/* 'filterText state' is then used to manipulate what gets rendered in the ProductTable sub components */}
+					{/* 'filterText  state' is then used to manipulate what gets rendered in the ProductTable sub components */}
 
 					{/* The 'e' stands for React event object, kind of like DOM events */}
-					{/* From the Docs: the onChange fires immediately when an option is selected */}
+					{/* From the Docs: the onChange fires immediately when an option is selected or when a change happnes*/}
 				
 				<label>
 					<input
 						type="checkbox"
 						checked={inStockOnly} // FWIU, this means that it changes live with each keypress
-						// value={filterText}
 						onChange={(e) => onInStockOnlyChange(e.target.checked)} // It also means that values are passed live
 						/>
 						{/* Why is this 'checked' instead of 'value'? Likely because it's binary rather than a string */}
@@ -112,6 +124,8 @@ function ThinkingReact(){
 		);
 	}
 
+
+
 	// For my use case, it might be clearer for me to arrange the components/functions where the
 	//	larger enclosing functions are declared first ().
 	// Nevermind. This backward declaration style of functions apparently incraseses compile time
@@ -124,18 +138,21 @@ function ThinkingReact(){
 				<SearchBar 
 					filterText={filterText} 
 					inStockOnly={inStockOnly} 
-					onFilterTextChange={setFilterText} // We're passing the function that will be used by the searhbar
-					onInStockOnlyChange={setInStockOnly} // We're passing the function that will be used by the eearch bar
+					onFilterTextChange={setFilterText} // We're passing the function that will be used by the search bar
+					onInStockOnlyChange={setInStockOnly} // We're passing the function that will be used by the search bar
 					/> 
 				<ProductTable products={products} filterText={filterText} inStockOnly={inStockOnly} />
-						{/* <ProductCategoryRow /> */}
-						{/* <ProductRow /> */}
+						{/* includes <ProductCategoryRow /> */}
+						{/* includes <ProductRow /> */}
 
 					{/* The <ProductTable/> changes live based on the 'state' that also changes live */}
-			</div>
+					{/* The 'states' are all shared in real-time */}
+			</div> 
 		);
 	}
 	
+
+	/* Sample data */
 	const PRODUCTS = [
 		{category: "Fruits", price: "$1", stocked: true, name: "Apple"},
 		{category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
@@ -145,6 +162,9 @@ function ThinkingReact(){
 		{category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
 	];
 
+
+
+	/* When this entire React component is called, return an HTML like output */
 	return(
 		<FilterableProductTable products={PRODUCTS} />
 	)
