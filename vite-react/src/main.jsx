@@ -6,6 +6,7 @@ import QuickStart from './QuickStart.jsx'
 import ThinkingReact from './ThinkingInReact.jsx'
 import DescribingTheUI from './DescribingTheUI.jsx'
 import { YourFirstComponent } from './DescribingTheUI.jsx'
+import AddingInteractivity from './AddingInteractivity.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -27,5 +28,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <h1>Describing the UI</h1>
     <DescribingTheUI />
     <YourFirstComponent />
+    <br /><hr /><br />
+    <h1>Adding Interactivity</h1>
+    <AddingInteractivity />
   </React.StrictMode>,
 )
