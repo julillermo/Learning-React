@@ -7,6 +7,7 @@ import ThinkingReact from './ThinkingInReact.jsx'
 import DescribingTheUI from './DescribingTheUI.jsx'
 import { YourFirstComponent } from './DescribingTheUI.jsx'
 import AddingInteractivity from './AddingInteractivity.jsx'
+import ReferencingRefs from './ReferencingRefs.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -31,5 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <br /><hr /><br />
     <h1>Adding Interactivity</h1>
     <AddingInteractivity />
+    <br /><hr /><br />
+    <ReferencingRefs />
   </React.StrictMode>,
 )
