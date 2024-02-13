@@ -8,6 +8,7 @@ import DescribingTheUI from './DescribingTheUI.jsx'
 import { YourFirstComponent } from './DescribingTheUI.jsx'
 import AddingInteractivity from './AddingInteractivity.jsx'
 import ReferencingRefs from './ReferencingRefs.jsx'
+import ManagingState from './ManagingtState.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -22,17 +23,25 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
     <App />
     <br /><hr /><br />
+
     <QuickStart />
     <br /><hr /><br />
+
     <ThinkingReact />
     <br /><hr /><br />
+
     <h1>Describing the UI</h1>
     <DescribingTheUI />
     <YourFirstComponent />
     <br /><hr /><br />
+
     <h1>Adding Interactivity</h1>
     <AddingInteractivity />
     <br /><hr /><br />
+
     <ReferencingRefs />
+    <br /><hr /><br />
+
+    <ManagingState />
   </React.StrictMode>,
 )
