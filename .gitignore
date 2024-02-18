@@ -12,6 +12,19 @@ vite-react/dist
 vite-react/dist-ssr
 *.local
 
+TicTacToe/logs
+*.log
+TicTacToe/npm-debug.log*
+TicTacToe/yarn-debug.log*
+TicTacToe/yarn-error.log*
+TicTacToe/pnpm-debug.log*
+TicTacToe/lerna-debug.log*
+
+TicTacToe/node_modules
+TicTacToe/dist
+TicTacToe/dist-ssr
+*.local
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
