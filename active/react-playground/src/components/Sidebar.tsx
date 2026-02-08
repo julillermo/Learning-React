@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import React, { type ReactNode } from "react";
 import reactLogo from "../assets/react.svg";
 import type { Page, PageKey } from "../types/sidebar";
 import { type ThemeMode } from "../types/theme";
@@ -22,9 +22,12 @@ export function Sidebar({
     <aside className={`${styles.sidebar} ${styles.sidebarTheme[theme]}`}>
       <h2 className={styles.title}>
         <img className={styles.logo} src={reactLogo} alt="React logo" />
-        React Playground
+        <p>React Playground</p>
+        {React.version}
       </h2>
-      <p className={styles.hint}>Switch between isolated demos without routing.</p>
+      <p className={styles.hint}>
+        Switch between isolated demos without routing.
+      </p>
       <nav className={styles.nav}>
         {pages.map((p) => (
           <button

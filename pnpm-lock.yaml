@@ -8,7 +8,7 @@ importers:
 
   .: {}
 
-  active/learn-react-2026-v19:
+  active/react-playground:
     dependencies:
       '@vanilla-extract/css':
         specifier: ^1.18.0
