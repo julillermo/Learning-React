@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import { appRoot, rootTheme } from "./App.css";
 
 import { PageArea } from "./components/PageArea";
 import { Sidebar } from "./components/Sidebar";
@@ -28,7 +28,7 @@ function App() {
   };
 
   return (
-    <div className={`app-root ${theme}`}>
+    <div className={`${appRoot} ${rootTheme[theme]}`}>
       <Sidebar
         pages={pages}
         active={active}
@@ -36,7 +36,7 @@ function App() {
         theme={theme}
         onToggleTheme={toggleTheme}
       />
-      <PageArea pages={pages} active={active} />
+      <PageArea pages={pages} active={active} theme={theme} />
     </div>
   );
 }
