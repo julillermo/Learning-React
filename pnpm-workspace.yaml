@@ -1,2 +1,3 @@
 packages:
-  - "apps/*"
+  - "active/*"
+  - "!archive/*" # exclude archived projects
