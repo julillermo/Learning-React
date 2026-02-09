@@ -1,3 +1,4 @@
+import { assignInlineVars } from "@vanilla-extract/dynamic";
 import React, { type ReactNode } from "react";
 import reactLogo from "../assets/react.svg";
 import type { Page, PageKey } from "../types/sidebar";
@@ -7,23 +8,30 @@ import * as styles from "./Sidebar.css";
 type SidebarProps = {
   pages: Page[];
   active: PageKey;
-  onChange: (page: PageKey) => void;
+  onPageChange: (page: PageKey) => void;
   theme: ThemeMode;
   onToggleTheme: () => void;
+  onHeaderClick?: () => void;
 };
 export function Sidebar({
   pages,
   active,
-  onChange,
+  onPageChange,
   theme,
   onToggleTheme,
+  onHeaderClick,
 }: SidebarProps): ReactNode {
   return (
     <aside className={`${styles.sidebar} ${styles.sidebarTheme[theme]}`}>
-      <h2 className={styles.title}>
+      <h2
+        className={styles.title}
+        onClick={onHeaderClick}
+        style={assignInlineVars({
+          [styles.onHeaderClickVar]: onHeaderClick ? "pointer" : "default",
+        })}
+      >
         <img className={styles.logo} src={reactLogo} alt="React logo" />
-        <p>React Playground</p>
-        {React.version}
+        <p>React Playground</p>v{React.version}
       </h2>
       <p className={styles.hint}>
         Switch between isolated demos without routing.
@@ -40,7 +48,7 @@ export function Sidebar({
             ]
               .filter(Boolean)
               .join(" ")}
-            onClick={() => onChange(p.id)}
+            onClick={() => onPageChange(p.id)}
           >
             {p.label}
           </button>

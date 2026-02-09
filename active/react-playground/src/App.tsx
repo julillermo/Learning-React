@@ -27,14 +27,19 @@ function App() {
     return setTheme((current) => (current === "light" ? "dark" : "light"));
   };
 
+  const handleHeaderClick = () => {
+    return window.open("https://react.dev/learn", "_blank");
+  };
+
   return (
     <div className={`${appRoot} ${rootTheme[theme]}`}>
       <Sidebar
         pages={pages}
         active={active}
-        onChange={setActive}
+        onPageChange={setActive}
         theme={theme}
         onToggleTheme={toggleTheme}
+        onHeaderClick={handleHeaderClick}
       />
       <PageArea pages={pages} active={active} theme={theme} />
     </div>

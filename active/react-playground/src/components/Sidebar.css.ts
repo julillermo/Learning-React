@@ -1,4 +1,6 @@
-import { style, styleVariants } from "@vanilla-extract/css";
+import { createVar, style, styleVariants } from "@vanilla-extract/css";
+
+export const onHeaderClickVar = createVar();
 
 export const sidebar = style({
   minWidth: "220px",
@@ -31,6 +33,11 @@ export const title = style({
   display: "flex",
   gap: "0.5rem",
   alignItems: "center",
+  selectors: {
+    "&:hover": {
+      cursor: onHeaderClickVar,
+    },
+  },
 });
 
 export const logo = style({
