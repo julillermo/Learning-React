@@ -1,27 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { appRoot, rootTheme } from "./App.css";
 
 import { PageArea } from "./components/PageArea";
 import { Sidebar } from "./components/Sidebar";
+import { ThemeProvider } from "./contexts/ThemeProvider";
+import { useTheme } from "./hooks/theme";
 import { navItems, pagesIndex } from "./pagesIndex";
 import type { PageKey } from "./types/sidebar";
-import type { ThemeMode } from "./types/style";
 
-function App() {
+function AppMain() {
   const [active, setActive] = useState<PageKey>("home");
-  const [theme, setTheme] = useState<ThemeMode>("light");
+  const { theme } = useTheme();
 
-  const toggleTheme = () => {
-    return setTheme((current) => (current === "light" ? "dark" : "light"));
-  };
-
-  const handleHeaderClick = () => {
-    return window.open("https://react.dev/learn", "_blank");
-  };
-
-  useEffect(() => {
-    document.body.dataset.theme = theme;
-  }, [theme]);
+  const handleHeaderClick = () =>
+    window.open("https://react.dev/learn", "_blank");
 
   return (
     <div className={`${appRoot} ${rootTheme[theme]}`}>
@@ -29,12 +21,18 @@ function App() {
         items={navItems}
         activeKey={active}
         onPageChange={setActive}
-        theme={theme}
-        onToggleTheme={toggleTheme}
         onHeaderClick={handleHeaderClick}
       />
-      <PageArea pages={pagesIndex} active={active} theme={theme} />
+      <PageArea pages={pagesIndex} active={active} />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppMain />
+    </ThemeProvider>
   );
 }
 

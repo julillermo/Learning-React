@@ -5,7 +5,7 @@ export type PageKey = "home" | "hooks" | "fetch" | "reducer" | "context";
 export type Page = {
   id: PageKey;
   label: string;
-  component: Page | ReactNode;
+  component: ReactNode;
 };
 
 export type NavItem = {

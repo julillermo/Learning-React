@@ -1,21 +1,20 @@
 import { useState, type ReactNode } from "react";
-import type { ThemeMode } from "../types/style";
+import { useTheme } from "../hooks/theme";
 import * as styles from "./Dropdown.css";
 
 export type DropdownProps = {
   label: string;
-  theme: ThemeMode;
   defaultOpen?: boolean;
   children: ReactNode;
 };
 
 export function Dropdown({
   label,
-  theme,
   defaultOpen = false,
   children,
 }: DropdownProps) {
   const [open, setOpen] = useState(defaultOpen);
+  const { theme } = useTheme();
 
   return (
     <div className={`${styles.dropdown} ${styles.dropdownTheme[theme]}`}>

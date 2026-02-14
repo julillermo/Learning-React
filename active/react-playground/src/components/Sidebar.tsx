@@ -1,9 +1,9 @@
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import React, { type ReactNode } from "react";
 import reactLogo from "../assets/react.svg";
+import { useTheme } from "../hooks/theme";
 import { pagesIndex } from "../pagesIndex";
 import type { NavItem, PageKey } from "../types/sidebar";
-import { type ThemeMode } from "../types/style";
 import { Dropdown } from "./Dropdown";
 import * as styles from "./Sidebar.css";
 
@@ -11,18 +11,16 @@ type SidebarProps = {
   items: NavItem[];
   activeKey: PageKey;
   onPageChange: (page: PageKey) => void;
-  theme: ThemeMode;
-  onToggleTheme: () => void;
   onHeaderClick?: () => void;
 };
 export function Sidebar({
   items,
   activeKey,
   onPageChange,
-  theme,
-  onToggleTheme,
   onHeaderClick,
 }: SidebarProps): ReactNode {
+  const { theme } = useTheme();
+
   return (
     <aside className={`${styles.sidebar} ${styles.sidebarTheme[theme]}`}>
       <h2
@@ -60,7 +58,7 @@ export function Sidebar({
               );
             case "dropdown":
               return (
-                <Dropdown label={item.label} theme={theme}>
+                <Dropdown label={item.label}>
                   {item.pageKeys.map((pageKey) => (
                     <button
                       key={pageKey}
@@ -86,25 +84,20 @@ export function Sidebar({
           }
         })}
       </nav>
-      <DarkModeToggle theme={theme} onToggleTheme={onToggleTheme} />
+      <DarkModeToggle />
     </aside>
   );
 }
 
-function DarkModeToggle({
-  theme,
-  onToggleTheme,
-}: {
-  theme: ThemeMode;
-  onToggleTheme: () => void;
-}) {
+function DarkModeToggle() {
+  const { theme, toggleTheme } = useTheme();
   return (
     <div className={styles.themeToggle[theme]}>
       <span>{`${theme === "light" ? "Light" : "Dark"} Mode`}</span>
       <button
         type="button"
         className={styles.themeToggleButton}
-        onClick={onToggleTheme}
+        onClick={toggleTheme}
       >
         Toggle
       </button>
