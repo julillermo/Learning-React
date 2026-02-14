@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import * as style from "./HooksPlayground.css";
 
-export function HooksPlayground() {
+export function HooksPlayground(): ReactNode {
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
   const mountedRef = useRef(false);
@@ -24,7 +25,12 @@ export function HooksPlayground() {
       <h1>Hooks Playground</h1>
       <div style={{ display: "grid", gap: 12 }}>
         <div>
-          <button onClick={() => setCount((c) => c + 1)}>Increase</button>
+          <button
+            className={style.buttonStyle}
+            onClick={() => setCount((c) => c + 1)}
+          >
+            Increase
+          </button>
           <span style={{ marginLeft: 8 }}>count: {count}</span>
         </div>
 

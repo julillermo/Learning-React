@@ -1,21 +1,23 @@
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import React, { type ReactNode } from "react";
 import reactLogo from "../assets/react.svg";
-import type { Page, PageKey } from "../types/sidebar";
+import { pagesIndex } from "../pagesIndex";
+import type { NavItem, PageKey } from "../types/sidebar";
 import { type ThemeMode } from "../types/theme";
+import { Dropdown } from "./Dropdown";
 import * as styles from "./Sidebar.css";
 
 type SidebarProps = {
-  pages: Page[];
-  active: PageKey;
+  items: NavItem[];
+  activeKey: PageKey;
   onPageChange: (page: PageKey) => void;
   theme: ThemeMode;
   onToggleTheme: () => void;
   onHeaderClick?: () => void;
 };
 export function Sidebar({
-  pages,
-  active,
+  items,
+  activeKey,
   onPageChange,
   theme,
   onToggleTheme,
@@ -37,22 +39,52 @@ export function Sidebar({
         Switch between isolated demos without routing.
       </p>
       <nav className={styles.nav}>
-        {pages.map((p) => (
-          <button
-            key={p.id}
-            type="button"
-            className={[
-              styles.navButton,
-              styles.navButtonTheme[theme],
-              p.id === active ? styles.navButtonActive : undefined,
-            ]
-              .filter(Boolean)
-              .join(" ")}
-            onClick={() => onPageChange(p.id)}
-          >
-            {p.label}
-          </button>
-        ))}
+        {items.map((item) => {
+          switch (item.kind) {
+            case "page":
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  className={[
+                    styles.navButton,
+                    styles.navButtonTheme[theme],
+                    item.id === activeKey ? styles.navButtonActive : undefined,
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  onClick={() => onPageChange(item.pageKeys[0])}
+                >
+                  {item.label}
+                </button>
+              );
+            case "dropdown":
+              return (
+                <Dropdown label="Guides" theme={theme}>
+                  {item.pageKeys.map((pageKey) => (
+                    <button
+                      key={pageKey}
+                      type="button"
+                      className={[
+                        styles.navButton,
+                        styles.navButtonTheme[theme],
+                        pageKey === activeKey
+                          ? styles.navButtonActive
+                          : undefined,
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
+                      onClick={() => onPageChange(pageKey)}
+                    >
+                      {pagesIndex.find((p) => p.id === pageKey)?.label}
+                    </button>
+                  ))}
+                </Dropdown>
+              );
+            default:
+              <></>;
+          }
+        })}
       </nav>
       <div className={styles.themeToggle}>
         <span>{`${theme === "light" ? "Light" : "Dark"} Mode`}</span>

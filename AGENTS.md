@@ -3,7 +3,8 @@
 ## Purpose
 
 - Use this file as the quick reference when you return to the learning-react workspace via AI chat.
-- Feel free to tweak AGETNS.md files the next time you hit a blocker—modify/delete as needed to unblock future requests.
+- Feel free to tweak AGENTS.md files the next time you hit a blocker—modify/delete as needed to unblock future requests.
+- Feel free to create a app/project specific AGENTS.md file to add granulity of control for specific apps/projects.
 
 ## Tech stack
 

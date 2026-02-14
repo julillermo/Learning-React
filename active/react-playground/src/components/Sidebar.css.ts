@@ -8,7 +8,7 @@ export const sidebar = style({
   padding: "1.5rem",
   border: "1px solid rgba(15, 15, 20, 0.1)",
   background: "rgba(19, 19, 24, 0.8)",
-  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.2)",
+  boxShadow: "0 12px 40px rgba(0, 0, 0, 0.25)",
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
@@ -21,7 +21,6 @@ export const sidebarTheme = styleVariants({
   light: {
     background: "#ffffff",
     borderColor: "rgba(27, 27, 36, 0.18)",
-    boxShadow: "0 10px 25px rgba(15, 15, 15, 0.08)",
   },
   dark: {
     background: "rgba(255, 255, 255, 0.04)",
