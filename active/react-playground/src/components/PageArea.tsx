@@ -1,5 +1,5 @@
 import type { Page } from "../types/sidebar";
-import type { ThemeMode } from "../types/theme";
+import type { ThemeMode } from "../types/style";
 import * as styles from "./PageArea.css";
 
 type PageAreaProps = {

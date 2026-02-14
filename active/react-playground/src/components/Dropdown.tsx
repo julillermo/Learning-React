@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import type { ThemeMode } from "../types/theme";
+import type { ThemeMode } from "../types/style";
 import * as styles from "./Dropdown.css";
 
 export type DropdownProps = {
@@ -12,7 +12,7 @@ export type DropdownProps = {
 export function Dropdown({
   label,
   theme,
-  defaultOpen = true,
+  defaultOpen = false,
   children,
 }: DropdownProps) {
   const [open, setOpen] = useState(defaultOpen);
@@ -30,7 +30,7 @@ export function Dropdown({
           className={`${styles.caret} ${open ? styles.caretOpen : ""}`}
           aria-hidden
         >
-          ▾
+          ◂
         </span>
       </button>
       <div className={`${styles.content} ${open ? "" : styles.contentClosed}`}>

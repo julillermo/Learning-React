@@ -1,22 +1,23 @@
 import { style, styleVariants } from "@vanilla-extract/css";
+import { accent, darkBorder, darkSurface } from "../styles/colors";
 
 export const dropdown = style({
   display: "flex",
   flexDirection: "column",
-  border: "1px solid rgba(100, 108, 255, 0.16)",
+  border: `1px solid ${accent(0.16)}`,
   borderRadius: "10px",
-  background: "rgba(100, 108, 255, 0.06)",
+  background: accent(0.06),
   overflow: "hidden",
 });
 
 export const dropdownTheme = styleVariants({
   light: {
-    background: "rgba(100, 108, 255, 0.06)",
-    borderColor: "rgba(100, 108, 255, 0.2)",
+    background: accent(0.02),
+    borderColor: accent(0.2),
   },
   dark: {
-    background: "rgba(255, 255, 255, 0.04)",
-    borderColor: "rgba(255, 255, 255, 0.1)",
+    background: darkSurface,
+    borderColor: darkBorder,
   },
 });
 
@@ -45,12 +46,12 @@ export const triggerTheme = styleVariants({
 export const caret = style({
   display: "inline-block",
   transition: "transform 0.2s ease",
-  color: "rgba(100, 108, 255, 0.6)",
+  color: accent(0.6),
 });
 
 export const caretOpen = style({
-  transform: "rotate(90deg)",
-  color: "rgba(100, 108, 255, 1)",
+  transform: "rotate(-90deg) scale(1.1)",
+  color: accent(1),
 });
 
 export const content = style({

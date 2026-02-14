@@ -1,4 +1,11 @@
 import { createVar, style, styleVariants } from "@vanilla-extract/css";
+import { elevatedCardBase } from "../styles/cards";
+import {
+  accent,
+  darkBorder,
+  darkSurface,
+  softAccentGradient,
+} from "../styles/colors";
 
 export const onHeaderClickVar = createVar();
 
@@ -8,13 +15,11 @@ export const sidebar = style({
   padding: "1.5rem",
   border: "1px solid rgba(15, 15, 20, 0.1)",
   background: "rgba(19, 19, 24, 0.8)",
-  boxShadow: "0 12px 40px rgba(0, 0, 0, 0.25)",
+  ...elevatedCardBase,
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
   gap: "2px",
-  transition:
-    "background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease",
 });
 
 export const sidebarTheme = styleVariants({
@@ -23,7 +28,8 @@ export const sidebarTheme = styleVariants({
     borderColor: "rgba(27, 27, 36, 0.18)",
   },
   dark: {
-    background: "rgba(255, 255, 255, 0.04)",
+    background: darkSurface,
+    borderColor: darkBorder,
   },
 });
 
@@ -54,6 +60,7 @@ export const logo = style({
 export const nav = style({
   display: "flex",
   flexDirection: "column",
+  flex: 1,
   gap: "0.5rem",
 });
 
@@ -68,15 +75,14 @@ export const navButton = style({
   cursor: "pointer",
   selectors: {
     "&:hover": {
-      borderColor: "rgba(100, 108, 255, 0.4)",
+      borderColor: accent(0.4),
     },
   },
 });
 
 export const navButtonActive = style({
-  background:
-    "linear-gradient(90deg, rgba(100, 108, 255, 0.2), rgba(81, 91, 242, 0.05))",
-  borderColor: "rgba(100, 108, 255, 0.25)",
+  background: softAccentGradient,
+  borderColor: accent(0.25),
 });
 
 export const navButtonTheme = styleVariants({
@@ -92,13 +98,23 @@ export const hint = style({
   fontSize: "0.9rem",
 });
 
-export const themeToggle = style({
+const baseThemeToggle = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
   marginTop: "2.5rem",
   padding: "0.75rem 0.5rem",
-  borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+};
+
+export const themeToggle = styleVariants({
+  light: {
+    ...baseThemeToggle,
+    borderTop: "1px solid rgba(0, 0, 0, 0.08)",
+  },
+  dark: {
+    ...baseThemeToggle,
+    borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+  },
 });
 
 export const themeToggleButton = style({

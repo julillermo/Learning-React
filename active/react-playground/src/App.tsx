@@ -5,7 +5,7 @@ import { PageArea } from "./components/PageArea";
 import { Sidebar } from "./components/Sidebar";
 import { navItems, pagesIndex } from "./pagesIndex";
 import type { PageKey } from "./types/sidebar";
-import type { ThemeMode } from "./types/theme";
+import type { ThemeMode } from "./types/style";
 
 function App() {
   const [active, setActive] = useState<PageKey>("home");

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type PageKey = "home" | "hooks" | "fetch";
+export type PageKey = "home" | "hooks" | "fetch" | "reducer" | "context";
 
 export type Page = {
   id: PageKey;
