@@ -1,6 +1,11 @@
 import { style, styleVariants } from "@vanilla-extract/css";
-import { darkBorder, darkSurface, lightBorder, lightSurface } from "../styles/colors";
 import { elevatedCardBase } from "../styles/cards";
+import {
+  darkBorder,
+  darkSurface,
+  lightBorder,
+  lightSurface,
+} from "../styles/colors";
 
 export const pageArea = style({
   ...elevatedCardBase,
@@ -9,7 +14,10 @@ export const pageArea = style({
   borderRadius: "14px",
   background: darkSurface,
   border: `1px solid ${darkBorder}`,
-  minHeight: "100%",
+  // minHeight: "100%",
+  //   minHeight: 0,
+  maxHeight: "100%",
+  overflow: "auto",
 });
 
 export const pageTheme = styleVariants({

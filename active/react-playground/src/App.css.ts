@@ -17,15 +17,15 @@ globalStyle("body", {
   padding: 0,
   boxSizing: "border-box",
   fontFamily:
-    "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+    'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
   transition: "background-color 0.3s ease",
 });
 
-globalStyle("body[data-theme=\"light\"]", {
+globalStyle('body[data-theme="light"]', {
   background: "#f0f2f8",
 });
 
-globalStyle("body[data-theme=\"dark\"]", {
+globalStyle('body[data-theme="dark"]', {
   background: "#05060a",
 });
 
@@ -34,6 +34,8 @@ export const appRoot = style({
   gap: "1.5rem",
   alignItems: "stretch",
   minHeight: "100vh",
+  height: "100vh",
+  // overflow: "hidden",
   boxSizing: "border-box",
   padding: "2rem 1.5rem",
   transition: "background 0.4s ease, color 0.4s ease",
