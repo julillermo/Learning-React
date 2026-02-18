@@ -5,8 +5,5 @@
 
 ## Planned updates for react-playground v0.1.0
 
-- [ ] page for exploring [useContext](https://react.dev/reference/react/useContext) and [useReducer](https://react.dev/reference/react/useReducer)
-
-## Planned updates for react-playground v0.2.0
-
-- [ ] page for exploring [React compiler](https://react.dev/learn/react-compiler)
+- [ ] page for exploring [useContext](https://react.dev/reference/react/useContext) and ~~[useReducer](https://react.dev/reference/react/useReducer)~~
+- [ ] genral UI fixes mentioned in the [IMPROVEMENTS.md](./IMPROVEMENTS.md) docs
