@@ -15,7 +15,7 @@
 - Verify consistency of types and logical flow throughout logic sequences
 ## Discouraged Actions
 ### Generating single-use scripts
-- Avoid using third-party packages for single-use scripts.
+- Avoid using third-party packages for single-use scripts.z
 ## Actions to Strictly Never Perform
 ### Git
 - Never commit a code change

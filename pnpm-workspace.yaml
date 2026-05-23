@@ -1,3 +1,4 @@
 packages:
   - "active/*"
   - "!archive/*" # exclude archived projects
+minimumReleaseAge: 10080
