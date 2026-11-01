@@ -1,4 +1,6 @@
 packages:
   - "active/*"
   - "!archive/*" # exclude archived projects
+allowBuilds:
+  esbuild: set this to true or false
 minimumReleaseAge: 10080
